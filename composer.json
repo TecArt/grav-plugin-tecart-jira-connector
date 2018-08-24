@@ -1,0 +1,15 @@
+{
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Grav\\Plugin\\TecartJiraConnector\\": "classes/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sören Müller",
+            "email": "soeren.mueller@tecart.de"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+form:
+  validation: loose
+  fields:
+
+    issue_id:
+      type: issues
+      validate:
+        required: false
+        message: 'Bitte wählen Sie einen Vorgang für diese Aktion aus! Ohne diese Angabe kann die Änderung nicht gespeichert werden.'

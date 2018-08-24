@@ -1,0 +1,27 @@
+{% extends "forms/field.html.twig" %}
+
+{% set options = grav.twig.issues %}
+
+{% block global_attributes %}
+    data-grav-issues="{{ (field.issues is defined ? field.issues : {})|json_encode()|e('html_attr') }}"
+    data-grav-field="select"
+    {{ parent() }}
+{% endblock %}
+
+{% block field %}
+
+<div class="button-group">
+    <div class="form-data full" data-grav-field="false" data-grav-selectize="true" style="width:300px;text-align:left;">
+        <select id="selectIssue" name="data[issue_id]" form="blueprints" required="required">
+            <option value="">Bitte wählen Sie ein Ticket aus</option>
+            {% for issue in grav.twig.issues %}
+                {% if in_array(issue.fields.status.id, config.plugins['tecart-jira-connector'].jira_issue_status_ids) %}
+                    <option {% if context.header.draft.issue.id|contains(issue.key) %}selected="selected"{% endif %}
+                        value="{{ issue.key }}">{{ issue.key }}: {{ issue.fields.summary|truncate(33)|raw }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+name: TecArt Jira Connector
+version: 0.1.0
+description: TecArt Jira Connector
+icon: plug
+author:
+  name: Sören Müller
+  email: soeren.mueller@tecart.de
+homepage: https://github.com/https-github-com-soeren-mueller-/grav-plugin-tecart-jira-connector
+keywords: tecart, git, jira, grav, plugin
+bugs: https://github.com/https-github-com-soeren-mueller-/grav-plugin-tecart-jira-connector/issues
+docs: https://github.com/https-github-com-soeren-mueller-/grav-plugin-tecart-jira-connector/blob/develop/README.md
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    Settings:
+      type: section
+      title: Settings
+      underline: true
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    jira_url:
+      type: text
+      label: Jira URL
+      placeholder: e.g. https://jira.tecart.de/
+      help: Text to add to the top of a page
+    jira_project:
+      type: text
+      label: Jira Project Key
+      placeholder: e.g. JRA
+    jira_user:
+      type: text
+      label: Jira User
+      placeholder: Username, not email
+    jira_password:
+      type: enc-password
+      label: Jira Password or Token
+      placeholder: Your Jira Password or Token
+      description: Enter your password or token to encrypt and securely store it, then save the settings. It will not show up here for security reasons.
+    jira_issue_status_ids:
+        type: selectize
+        size: large
+        label: Vorgangsstatus-IDs für Vorgangsauswahl
+        classes: fancy
+        default: "1, 2, 3, 4"
+        validate:
+            type: commalist
